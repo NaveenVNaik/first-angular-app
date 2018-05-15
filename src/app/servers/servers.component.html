@@ -1,3 +1,12 @@
-<!-- <h3>Inside servers component</h3>
-<app-server></app-server>
-<app-server></app-server> -->
+<div class="d-flex p-4 border border-secondary ">
+    <div>
+        <h3>Inside servers component</h3>
+        <button class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button>
+        <br><br>
+        <p>Value of allowNewServer using string interpolation {{ allowNewServer }}</p>
+        <p>Value of allowNewServer using property binding <span [innerText]="allowNewServer"></span></p>
+        <app-server></app-server>
+        <br>
+        <app-server></app-server>
+    </div>
+</div>
