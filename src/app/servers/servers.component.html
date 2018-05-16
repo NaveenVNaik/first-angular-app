@@ -1,10 +1,30 @@
 <div class="d-flex p-4 border border-secondary ">
     <div>
         <h3>Inside servers component</h3>
-        <button class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button>
-        <br><br>
+
+        <!-- Event binding by passing event data - one way binding-->
+        <label>Enter Server Name:</label>
+        <input type="text" placeholder="one way binding" class="form-control" (input)="putServerName($event)"/><br>
+        <!-- event binding using 2 way data binding -->
+        <input type="text" placeholder="two way binding" class="form-control" [(ngModel)]="serverName"/>
+        <p>{{ serverName }}</p>
+
+        <!-- event binding using function call-->
+        <button class="btn btn-primary" [disabled]="!allowNewServer"
+                (click)="onServerCreate()"
+        >Add Server</button>
+
+        <!-- event binding using expression or we can call it as typescript code -->
+        <!-- <button class="btn btn-primary" [disabled]="!allowNewServer"
+                (click)="serverCreateStatus = 'Server created successfully!' "
+>       Add Server</button> -->
+        <p>{{ serverCreateStatus }}</p>
+        <p>{{ addedServerName }}</p>
+        
+        <!-- below 2 lines of code are example where we can use string interpolation or property binding -->
         <p>Value of allowNewServer using string interpolation {{ allowNewServer }}</p>
         <p>Value of allowNewServer using property binding <span [innerText]="allowNewServer"></span></p>
+
         <app-server></app-server>
         <br>
         <app-server></app-server>

@@ -23,6 +23,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersComponent implements OnInit {
   allowNewServer = false;
+  serverCreateStatus = "Server was never created !";
+  serverName = 'Two way binding !!!';
+  addedServerName = '';
   
   constructor() {
     setTimeout(() => this.allowNewServer = true, 4000);
@@ -30,5 +33,12 @@ export class ServersComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  onServerCreate = () => {
+    this.serverCreateStatus = 'Server created !'
+    this.addedServerName = this.serverName;
+  }
+
+  putServerName = (event) => this.serverName = event.target.value;
 
 }
