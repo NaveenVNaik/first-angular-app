@@ -24,9 +24,11 @@ import { Component, OnInit } from '@angular/core';
 export class ServersComponent implements OnInit {
   allowNewServer = false;
   serverCreateStatus = "Server was never created !";
+  serverCreated = false;
   serverName = 'Two way binding !!!';
   addedServerName = '';
-  
+  servers = ['Server 1', 'Server 2'];
+
   constructor() {
     setTimeout(() => this.allowNewServer = true, 4000);
   }
@@ -35,6 +37,8 @@ export class ServersComponent implements OnInit {
   }
 
   onServerCreate = () => {
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreateStatus = 'Server created !'
     this.addedServerName = this.serverName;
   }

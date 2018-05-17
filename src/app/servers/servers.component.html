@@ -18,15 +18,20 @@
         <!-- <button class="btn btn-primary" [disabled]="!allowNewServer"
                 (click)="serverCreateStatus = 'Server created successfully!' "
 >       Add Server</button> -->
-        <p>{{ serverCreateStatus }}</p>
-        <p>{{ addedServerName }}</p>
+
+        <!-- <p>{{ serverCreateStatus }}</p> -->
+        
+        <!-- ngIF else -->
+        <p *ngIf="serverCreated else noServer"><br>Server has been created and name is - {{ addedServerName }}</p>
+        <ng-template #noServer>
+            <p>Server was never created !!</p>
+        </ng-template>
         
         <!-- below 2 lines of code are example where we can use string interpolation or property binding -->
         <p>Value of allowNewServer using string interpolation {{ allowNewServer }}</p>
         <p>Value of allowNewServer using property binding <span [innerText]="allowNewServer"></span></p>
 
-        <app-server></app-server>
-        <br>
-        <app-server></app-server>
+        <app-server *ngFor="let server of servers"></app-server>
+        
     </div>
 </div>
